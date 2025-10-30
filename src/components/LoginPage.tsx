@@ -151,18 +151,57 @@ const LoginPage = () => {
                                     )}
                                 </button>
                             </form>
+                            {/* ===== Loading Overlay (appears during redirect) ===== */}
+                            {loading && (
+                                <div className="fixed inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center z-9999 transition-opacity">
+                                    <div className="w-14 h-14 border-4 border-t-transparent border-purple-500 rounded-full animate-spin mb-4"></div>
+                                    <p className="text-white text-lg font-medium">Logging...</p>
+                                </div>
+                            )}
+                            {/* Divider */}
+                            <div className="flex items-center my-6">
+                                <div className="flex-1 h-px bg-gray-300 dark:bg-gray-700"></div>
+                                <span className="px-4 text-gray-500 dark:text-gray-400 text-sm">or</span>
+                                <div className="flex-1 h-px bg-gray-300 dark:bg-gray-700"></div>
+                            </div>
+
+                            {/* Google Sign-in */}
+                            <button
+                                type="button"
+                                className="inline-flex items-center justify-center gap-2 whitespace-nowrap border border-white/30 rounded-xl cursor-pointer text-sm font-medium px-4 py-2 w-full h-12 bg-background hover:bg-background/80 transition-all duration-200"
+                            >
+                                <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                                    <path fill="#EA4335" d="M24 9.5c3.94 0 7.04 1.63 9.16 3.02l6.85-6.85C35.91 2.35 30.35 0 24 0 14.6 0 6.49 5.44 2.54 13.36l7.94 6.17C12.54 13.09 17.83 9.5 24 9.5z" />
+                                    <path fill="#34A853" d="M46.15 24.56c0-1.49-.13-2.9-.37-4.28H24v8.1h12.45c-.53 2.7-2.11 5-4.45 6.54l7.02 5.45c4.11-3.8 7.13-9.4 7.13-15.81z" />
+                                    <path fill="#4A90E2" d="M9.83 28.19A14.46 14.46 0 0 1 8.9 24c0-1.45.25-2.85.69-4.19l-7.94-6.17A23.996 23.996 0 0 0 0 24c0 3.86.9 7.51 2.54 10.81l7.29-6.62z" />
+                                    <path fill="#FBBC05" d="M24 48c6.35 0 11.7-2.09 15.6-5.69l-7.02-5.45c-2.02 1.36-4.6 2.14-8.58 2.14-6.17 0-11.46-3.59-13.52-8.88l-7.94 6.17C6.49 42.56 14.6 48 24 48z" />
+                                </svg>
+                                Continue with Google
+                            </button>
+
+                            {/* Signup Link */}
+                            <div className="text-center mt-6">
+                                <p className="text-foreground/70">
+                                    Don’t have an account?{" "}
+                                    <Link
+                                        href="/login"
+                                        className="text-purple-500 hover:text-purple-600 dark:text-purple-400 dark:hover:text-purple-300 font-medium"
+                                    >
+                                        Sign up
+                                    </Link>
+                                </p>
+                            </div>
+
+                            {/* Demo Info */}
+                            <div className="mt-6 p-4 bg-muted/50 rounded-xl border border-white/30 cursor-pointer">
+                                <p className="text-sm text-foreground/70 text-center">
+                                    Demo: Use any email and password to log in
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </main>
-
-            {/* ===== Loading Overlay (appears during redirect) ===== */}
-            {loading && (
-                <div className="fixed inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center z-9999 transition-opacity">
-                    <div className="w-14 h-14 border-4 border-t-transparent border-purple-500 rounded-full animate-spin mb-4"></div>
-                    <p className="text-white text-lg font-medium">Logging...</p>
-                </div>
-            )}
+            </main >
         </div>
     );
 };
