@@ -89,7 +89,7 @@ const RegisterPage = () => {
             </nav>
 
             {/* ===== Main Section ===== */}
-            <main className="px-4 sm:px-6 relative">
+            <main className="mt-12 px-4 sm:px-6 relative">
                 <div className="min-h-screen flex items-center justify-center py-8 sm:py-12">
                     {/* Background Effects */}
                     <div className="absolute inset-0 overflow-hidden">

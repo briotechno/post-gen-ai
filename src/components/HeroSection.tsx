@@ -21,7 +21,7 @@ const HeroSection = () => {
             <div className="from-[#ffffff] via-[#ffffff] to-[#ffffff] dark:from-[#0B0F1F] dark:via-[#0A0E1C] dark:to-[#111828] transition-colors duration-500">
 
                 {/* Hero section Powered by Advanced AI Technology */}
-                <section className="relative min-h-screen flex flex-col items-center justify-center px-3 sm:px-4 lg:px-8 pt-16 sm:pt-20 pb-12 sm:pb-16">
+                <section className="mt-12 relative min-h-screen flex flex-col items-center justify-center px-3 sm:px-4 lg:px-8 pt-16 sm:pt-20 pb-12 sm:pb-16">
 
                     {/* Background Blur Circles */}
                     <div className="absolute inset-0 overflow-hidden">

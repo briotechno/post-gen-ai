@@ -36,10 +36,10 @@ export default function RootLayout({
       >
         {/* Wrap everything inside ThemeProvider */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <header className="p-6 flex justify-end">
+          {/* <header className="p-6 flex justify-end"> */}
             {/* Your toggle button */}
-            <ThemeToggle />
-          </header>
+            {/* <ThemeToggle /> */}
+          {/* </header> */}
           {children}
         </ThemeProvider>
       </body>

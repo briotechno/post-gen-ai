@@ -64,7 +64,7 @@ const LoginPage = () => {
             </nav>
 
             {/* ===== Main Section ===== */}
-            <main className="px-4 sm:px-6">
+            <main className="mt-12 px-4 sm:px-6">
                 <div className="min-h-screen flex items-center justify-center px-3 sm:px-4 py-8 sm:py-12 relative">
                     {/* Background Effects */}
                     <div className="absolute inset-0 overflow-hidden">
