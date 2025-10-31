@@ -6,8 +6,16 @@ import Link from "next/link";
 import Features from "./Features";
 import Transform from "./Transform";
 import Pricing from "./Pricing";
+import { useState } from "react";
+import Preloader from "./Preloader";
 
 const HeroSection = () => {
+    const [loading, setLoading] = useState(true);
+
+    if (loading) {
+        return <Preloader onFinish={() => setLoading(false)} />;
+    }
+
     return (
         <>
             <div className="from-[#ffffff] via-[#ffffff] to-[#ffffff] dark:from-[#0B0F1F] dark:via-[#0A0E1C] dark:to-[#111828] transition-colors duration-500">
@@ -117,8 +125,8 @@ const HeroSection = () => {
                 </section >
 
                 {/* Demo Card */}
-                <div className="my-12 relative">
-                    <div className="backdrop-blur-xl bg-white/10 dark:bg-gray-900/10 border border-[#101623] dark:border-gray-700/20 rounded-3xl p-8 shadow-2xl mx-auto max-w-4xl">
+                <div className="relative">
+                    <div className="backdrop-blur-xl border border-[#101623] dark:border-gray-700/20 rounded-3xl p-8 shadow-2xl mx-auto max-w-4xl">
                         <div className="h-64 bg-linear-to-r from-purple-100 to-pink-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl flex items-center justify-center">
                             <div className="text-center">
                                 <Sparkles className="w-16 h-16 text-purple-500 mx-auto mb-4" />
@@ -142,6 +150,7 @@ const HeroSection = () => {
                 <footer className="relative overflow-hidden">
                     {/* Background effects */}
                     <div className="absolute inset-0">
+
                         <div className="absolute inset-0 bg-linear-to-br from-purple-900/10 via-background to-pink-900/10" />
                         <div className="absolute top-20 left-20 w-32 h-32 bg-linear-to-br from-purple-500/5 to-pink-500/5 rounded-full blur-xl animate-float" />
                         <div className="absolute bottom-20 right-20 w-40 h-40 bg-linear-to-br from-blue-500/5 to-purple-500/5 rounded-full blur-xl animate-float-delayed" />

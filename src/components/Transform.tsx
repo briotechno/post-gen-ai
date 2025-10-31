@@ -111,7 +111,7 @@ const Transform = () => {
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
                     >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-full mb-6">
+                        <div className="inline-flex items-center gap-2 bg-linear-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-full px-6 py-3 mb-6">
                             <Sparkles className="w-5 h-5 text-purple-500" />
                             <span className="text-sm text-purple-600 dark:text-purple-400">
                                 Transform Your LinkedIn Presence
@@ -125,6 +125,7 @@ const Transform = () => {
                                 <span className="bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
                                     Viral Content
                                 </span>
+                                <span className="hidden md:block absolute bottom-1 left-0 w-full h-3 bg-linear-to-r from-purple-500 to-pink-500 rounded-full"></span>
                                 <div className="absolute bottom-2 left-0 h-3 bg-linear-to-r from-purple-500/30 to-pink-500/30 rounded-full"></div>
                             </span>
                             <br />
@@ -167,7 +168,7 @@ const Transform = () => {
                         ))}
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
                         {steps.map((step, index) => (
                             <motion.div
                                 key={step.id}
@@ -194,6 +195,13 @@ const Transform = () => {
                                     </div>
                                 </div>
 
+                                <div className="relative group cursor-pointer transition-all duration-500 scale-105">
+                                    <div className="hidden lg:block absolute top-5 -right-10 z-10">
+                                        <div className="w-8 h-0.5 bg-linear-to-r from-purple-400 to-pink-400 origin-right"></div>
+                                        <div className="absolute -right-1 -top-1 w-2 h-2 bg-purple-500 rounded-full"></div>
+                                    </div>
+
+                                </div>
                                 {/* Icon */}
                                 <div
                                     className={`w-16 h-16 bg-linear-to-br ${step.color} rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg`}
@@ -247,9 +255,9 @@ const Transform = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
-                            className="relative py-5 rounded-3xl border border-white/10 bg-linear-to-r from-[#1B162E] via-[#25162A] to-[#1C203E] blur-4xl shadow-[0_0_30px_rgba(0,0,0,0.3)] overflow-hidden"
+                            className="backdrop-blur-xl bg-linear-to-r from-purple-500/10 via-pink-500/10 to-blue-500/10 border border-purple-500/20 rounded-3xl p-8 mb-12"
                         >
-                            <h3 className="text-white text-xl md:text-2xl font-semibold mb-10">
+                            <h3 className="text-xl md:text-2xl font-semibold mb-10">
                                 Trusted by Content Creators Worldwide
                             </h3>
 
@@ -263,7 +271,7 @@ const Transform = () => {
                                         <div className="w-12 h-12 rounded-2xl bg-linear-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-4 shadow-lg">
                                             {stat.icon}
                                         </div>
-                                        <h4 className="text-white text-2xl font-semibold">{stat.value}</h4>
+                                        <h4 className="text-2xl font-semibold">{stat.value}</h4>
                                         <p className="text-gray-400 text-sm mt-1">{stat.label}</p>
                                     </motion.div>
                                 ))}

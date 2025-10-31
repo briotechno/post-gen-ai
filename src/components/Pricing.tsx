@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Star, Check, X, Crown, ChevronRight, MessageCircle, Rocket, Sparkles } from 'lucide-react'
+import { Star, Check, X, Crown, Rocket, Sparkles, Headphones } from 'lucide-react'
 import Link from 'next/link'
 
 const plans = [
@@ -129,9 +129,17 @@ const Pricing = () => {
                                 Pricing 💎
                             </span>
                         </h2>
-                        <p className="max-w-3xl mx-auto text-lg leading-relaxed">
+                        <p className="text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed mb-8 px-2">
                             Choose the perfect plan for your content creation needs. Start free and scale as you grow.
                         </p>
+
+                        <div className="flex items-center justify-center gap-4 mb-8 sm:mb-12">
+                            <span className='text-sm font-medium transition-colors text-foreground'>Monthly</span>
+                            <button className='relative w-12 h-6 rounded-full transition-all duration-300 bg-gray-300 dark:bg-gray-600'>
+                                <div className="absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-300 translate-x-0.5"></div>
+                            </button>
+                            <span className='text-sm font-medium transition-colors text-foreground/60'>Annual</span>
+                        </div>
                     </motion.div>
 
                     {/* Pricing Cards */}
@@ -266,7 +274,7 @@ const Pricing = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4, delay: i * 0.1 }}
                                 viewport={{ once: true }}
-                                className="rounded-xl border border-gray-200 dark:border-white/10  p-5 text-left hover:bg-gray-50 dark:hover:bg-white/10 transition"
+                                className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/60 dark:bg-white/5 p-6 shadow-xl hover:shadow-2xl transition-all duration-300"
                             >
                                 <h4 className="font-semibold mb-2 flex items-center">
                                     {faq.q}
@@ -282,9 +290,9 @@ const Pricing = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                         viewport={{ once: true }}
-                        className="text-center rounded-3xl border border-gray-200 dark:border-white/10 bg-linear-to-r from-purple-600/10 to-pink-600/10 dark:from-purple-600/20 dark:to-pink-600/20 p-10 backdrop-blur-xl"
+                        className="text-center rounded-3xl border border-purple-500/20 bg-linear-to-r from-purple-500/10 to-pink-500/10 p-10 backdrop-blur-xl"
                     >
-                        <h3 className="text-2xl font-display font-bold mb-3">
+                        <h3 className="text-3xl font-display font-bold mb-3">
                             Still have questions?
                         </h3>
                         <p className="mb-6 max-w-xl mx-auto">
@@ -294,7 +302,8 @@ const Pricing = () => {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 href="/faq"
-                                className="px-6 py-3 border border-gray-300 dark:border-white/20 rounded-xl hover:bg-gray-100 dark:hover:bg-white/10 transition"
+                                className="px-6 py-3 rounded-xl hover:bg-gray-100
+                                 bg-white/5 transition font-medium"
                             >
                                 View FAQ
                             </Link>
@@ -302,7 +311,7 @@ const Pricing = () => {
                                 href="/contact"
                                 className="px-6 py-3 rounded-xl bg-linear-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white flex items-center justify-center gap-2 shadow-lg"
                             >
-                                <MessageCircle className="w-4 h-4" /> Contact Support
+                                <Headphones className="w-4 h-4" /> Contact Support
                             </Link>
                         </div>
                     </motion.div>

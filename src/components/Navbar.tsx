@@ -36,7 +36,7 @@ const Navbar = () => {
                                 <div className="w-5 h-5 text-white">✨</div>
                             </div>
                             <div className="absolute -top-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-green-500 
-                  rounded-full border-2 border-white dark:border-gray-900 animate-pulse" />
+                  rounded-full border-2 border-white animate-pulse" />
                         </div>
                         <span className="text-lg text-md sm:text-[20px] font-bold bg-linear-to-r from-purple-600 to-pink-600 
                 bg-clip-text text-transparent">
