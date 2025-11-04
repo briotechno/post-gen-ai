@@ -24,7 +24,7 @@ const LoginPage = () => {
         console.log("Logging in with:", { email, password });
 
         setTimeout(() => {
-            router.push("/");
+            router.push("/dashboard");
         }, 2000);
     };
 

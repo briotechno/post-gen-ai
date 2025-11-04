@@ -40,7 +40,7 @@ const RegisterPage = () => {
         console.log("Registering with:", { fullName, email, password });
 
         setTimeout(() => {
-            router.push("/");
+            router.push("/dashboard");
         }, 2000);
     };
 

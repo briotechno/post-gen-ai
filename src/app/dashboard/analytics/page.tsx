@@ -1,11 +1,183 @@
 import React from 'react'
+import { BarChart3, Filter, Heart, History, MessageCircle, Repeat2, Search } from 'lucide-react'
 
-const page = () => {
+const stats = [
+  { title: "Total Posts", value: 5, icon: History, color: "text-[#6367E9]" },
+  { title: "Total Likes", value: 365, icon: Heart, color: "text-[#EF4444]" },
+  { title: "Comments", value: 87, icon: MessageCircle, color: "text-[#3B82F6]" },
+  { title: "Shares", value: 62, icon: Repeat2, color: "text-[#22C55E]" },
+
+];
+
+const Analytics = [
+  {
+    title: "Leadership in Remote Teams",
+    category: "Published",
+    categoryTwo: "professional",
+    content: "🚀 Leading remote teams requires a different approach than traditional in-person management...",
+    hashtags: ["#leadership", "#remotework", "#management"],
+    created: "15/01/2024",
+    updated: "16/01/2024",
+    heart: "47",
+    MessageCircle: "12",
+    History: "8"
+  },
+  {
+    title: "Innovation in Tech Industry",
+    category: "Published",
+    categoryTwo: "inspirational",
+    content: "💡 The tech industry is evolving at breakneck speed, and staying ahead requires constant innovation...",
+    hashtags: ["#innovation", "#technology", "#startup"],
+    created: "15/01/2024",
+    updated: "15/01/2024",
+    heart: "89",
+    MessageCircle: "23",
+    History: "15"
+  },
+  {
+    title: "Personal Branding Tips",
+    category: "Draft",
+    categoryTwo: "educational",
+    content: "✨ Building your personal brand isn't just about self-promotion—it's about creating genuine value...",
+    hashtags: ["#personalbranding", "#networking", "#career"],
+    created: "14/01/2024",
+    updated: "16/01/2024",
+    heart: "89",
+    MessageCircle: "12",
+    History: "8"
+  },
+  {
+    title: "AI in Modern Workplace",
+    category: "Published",
+    categoryTwo: "professional",
+    content: "🤖 Artificial Intelligence is transforming how we work, collaborate, and innovate...",
+    hashtags: ["#AI", "#workplace", "#future", "#technology"],
+    created: "13/01/2024",
+    updated: "13/01/2024",
+    heart: "156",
+    MessageCircle: "34",
+    History: "28"
+  },
+  {
+    title: "Startup Growth Strategies",
+    category: "Published",
+    categoryTwo: "inspirational",
+    content: "📈 Growing a startup from idea to scale requires strategic thinking and execution...",
+    hashtags: ["#startup", "#growth", "#entrepreneurship"],
+    created: "12/01/2024",
+    updated: "12/01/2024",
+    heart: "73",
+    MessageCircle: "18",
+    History: "11"
+  }
+]
+
+const analyticspage = () => {
   return (
-    <div>
-      analyticspage
+    <div className="min-h-screen w-full">
+      <div className="max-w-7xl mx-auto space-y-10">
+        <div className="backdrop-blur-xl border border-border/50 rounded-2xl p-4 sm:p-6 shadow-xl border-white/10 flex flex-col lg:flex-row items-start lg:items-center justify-between">
+          <div className="flex">
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-linear-to-r from-pink-500 to-purple-500 mr-2">
+              <BarChart3 className="w-5 h-5 text-white" />
+            </div>
+            <div className="">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold bg-linear-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                Analytics & History
+              </h2>
+              <p className="text-sm sm:text-base text-gray-500">
+                View all your generated posts and their performance
+              </p>
+            </div>
+          </div>
+
+          {/* Serchbar */}
+          <div className="flex">
+            <div
+              className="flex items-center gap-2 w-65 max-w-sm px-4 py-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md shadow-inner focus-within:border-purple-400 transition"
+            >
+              <Search className="w-4 h-4 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search drafts..."
+                className="bg-transparent outline-none text-sm text-gray-200 placeholder-gray-500 w-full"
+              />
+            </div>
+            <div className="flex items-center gap-2 max-w-sm mx-2 p-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md shadow-inner focus-within:border-purple-400 transition">
+              <Filter className="w-4 h-4 text-gray-400" />
+            </div>
+          </div>
+        </div>
+
+        {/* stats */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {stats.map(({ title, value, icon: Icon, color }, index) => (
+            <div key={index} className="backdrop-blur-xl border border-white/5 bg-linear-to-br from-white/2 to-transparent shadow-[0_0px_5px_rgba(0,0,0,0.1)] rounded-2xl p-5 flex items-center justify-between" >
+              <div>
+                <h3 className="text-sm text-gray-400">{title}</h3>
+                <p className="text-2xl font-semibold">{value}</p>
+              </div>
+              <Icon className={`w-6 h-6 ${color}`} />
+            </div>
+          ))}
+        </div>
+
+        {/* Analytics */}
+        <div className="grid grid-cols-1 gap-4">
+          {Analytics.map((draft, index) => (
+            <div key={index} className="backdrop-blur-xl border border-white/5 bg-linear-to-br from-white/2 to-transparent shadow-[0_0px_5px_rgba(0,0,0,0.1)] rounded-2xl p-5 space-y-3" >
+
+              <div className="flex justify-between items-start">
+                <div className="flex">
+                  <h2 className="text-base font-semibold">{draft.title}</h2>
+
+                  <span className="bg-[#5257C1] inline-block px-2 py-1 mx-2 text-xs font-medium rounded-full capitalize"> {draft.category} </span>
+
+                  <span className="inline-block px-2 py-1 text-xs rounded-full 
+                   bg-white/10 capitalize"> {draft.categoryTwo} </span>
+
+                </div>
+                <button className="hover:text-white transition">⋮</button>
+              </div>
+
+              <div className="flex text-xs text-gray-500 mt-2">
+                <p>Created: {draft.created}</p>
+                <p className='mx-2'>Published: {draft.updated}</p>
+              </div>
+
+              <p className="text-sm text-gray-500">{draft.content}</p>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="">
+                  {draft.hashtags.map((tag, i) => (
+                    <span key={i} className="text-xs mx-1 bg-white/5 border border-white/10 px-2 py-1 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex text-gray-500 text-sm mt-3">
+                  <div className="flex items-center mx-1 gap-1 hover:text-pink-500 transition">
+                    <Heart className="w-4 h-4" />
+                    <span>{draft.heart}</span>
+                  </div>
+
+                  <div className="flex items-center mx-2 gap-1 hover:text-blue-400 transition">
+                    <MessageCircle className="w-4 h-4" />
+                    <span>{draft.MessageCircle}</span>
+                  </div>
+
+                  <div className="flex items-center mx-1 gap-1 hover:text-green-400 transition">
+                    <History className="w-4 h-4" />
+                    <span>{draft.History}</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
 
-export default page
+export default analyticspage
