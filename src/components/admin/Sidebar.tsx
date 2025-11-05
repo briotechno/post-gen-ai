@@ -58,21 +58,21 @@ const Sidebar = () => {
         z-40 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl 
         overflow-hidden flex flex-col justify-between
         transition-all duration-300 
-        w-20 md:w-64
+        w-20 md:w-70
       "
         >
             {/* Top Section */}
             <div className="flex items-center justify-center md:justify-between p-4 border-b border-white/10">
                 <Link href="/dashboard" className="flex items-center gap-3">
                     <div className="relative flex items-center justify-center">
-                        <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg shadow-pink-500/20">
+                        <div className="w-10 h-10 bg-linear-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg shadow-pink-500/20">
                             <span className="text-lg text-white">✨</span>
                         </div>
                         <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white animate-pulse" />
                     </div>
                     {/* Hidden on small screens */}
                     <div className="hidden md:block">
-                        <h1 className="text-lg font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                        <h1 className="text-lg font-bold bg-linear-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
                             PostGen AI
                         </h1>
                         <p className="text-xs text-gray-500">Pro Dashboard</p>
@@ -91,14 +91,14 @@ const Sidebar = () => {
                                 href={href}
                                 className={`flex items-center justify-center md:justify-start gap-0 md:gap-3 py-3 px-3 rounded-xl transition-all duration-300
                 ${isActive
-                                        ? "bg-gradient-to-r from-purple-500/20 to-pink-500/30"
+                                        ? "bg-linear-to-r from-purple-500/20 to-pink-500/30"
                                         : "hover:bg-white/5 hover:text-purple-500"
                                     }`}
                             >
                                 <div
                                     className={`p-2 rounded-lg transition-all duration-300
                     ${isActive
-                                            ? "bg-gradient-to-br from-pink-500 to-purple-500 text-white"
+                                            ? "bg-linear-to-br from-pink-500 to-purple-500 text-white"
                                             : "text-gray-500"
                                         }`}
                                 >

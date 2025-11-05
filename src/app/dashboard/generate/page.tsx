@@ -1,5 +1,13 @@
-import React from 'react'
+"use client";
+
+import React, { useState } from 'react'
 import { TrendingUp, Lightbulb, AtSign, Zap, User, Clock, BarChart3 } from 'lucide-react'
+import Tabs from './components/Tabs';
+import ContentInput from './components/ContentInput';
+import YourPost from './components/YourPost';
+import EditPage from './edit/page';
+import TemplatesPage from './templates/page';
+import HistoryPage from './history/page';
 
 const tips = [
   {
@@ -50,7 +58,11 @@ const insights = [
     color: "text-blue-400",
   },
 ];
+
 const generatepage = () => {
+  const [activeTab, setActiveTab] = useState("Generate");
+  const [generatedPost, setGeneratedPost] = useState("");
+
   return (
     <div className="min-h-screen w-full">
       <div className="max-w-7xl mx-auto space-y-10">
@@ -69,7 +81,7 @@ const generatepage = () => {
             </div>
           </div>
           <div className="flex">
-            <div className="mt-4 mx-2 sm:mt-0 flex">
+            <div className="mx-2 flex">
               <div className="flex flex-col">
                 <span className="text-xl font-medium text-center">1,247</span>
                 <h6 className="text-[10px] text-gray-500">Posts Created</h6>
@@ -82,11 +94,33 @@ const generatepage = () => {
           </div>
         </div>
 
+        {/* Tabs */}
+        <div className="backdrop-blur-xl border border-border/50 rounded-2xl p-5 sm:p-4 shadow-xl border-white/10">
+
+          <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+
+          {/* Render based on selected tab */}
+          <div className="mt-6">
+            {activeTab === "Generate" && (
+              <div className="grid lg:grid-cols-2 gap-6">
+                <ContentInput setGeneratedPost={setGeneratedPost} />
+                <YourPost generatedPost={generatedPost} />
+              </div>
+            )}
+
+            {activeTab === "Edit" && <EditPage />}
+
+            {activeTab === "Templates" && <TemplatesPage />}
+
+            {activeTab === "History" && <HistoryPage />}
+          </div>
+        </div>
+
         {/* Quick,Trending,Performance */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 rounded-2xl max-w-7xl mx-auto">
 
           {/* Quick Tips */}
-          <div className="backdrop-blur-xl border border-white/5 bg-linear-to-br from-white/2 to-transparent shadow-[0_0px_5px_rgba(0,0,0,0.1)] rounded-2xl p-5"
+          <div className="backdrop-blur-xl border border-border/50 rounded-2xl p-4 sm:p-5 shadow-xl border-white/10"
           >
             <h3 className="text-lg font-semibold flex items-center gap-2">
               <Lightbulb className="w-5 h-5 text-purple-400" />
@@ -104,7 +138,8 @@ const generatepage = () => {
           </div>
 
           {/* Trending Topics */}
-          <div className="backdrop-blur-xl border border-white/5 bg-linear-to-br from-white/2 to-transparent shadow-[0_0px_5px_rgba(0,0,0,0.1)] rounded-2xl p-5">
+          <div className="backdrop-blur-xl border border-border/50 rounded-2xl p-4 sm:p-5 shadow-xl border-white/10"
+          >
 
             <h3 className="text-lg font-semibold flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-blue-400" />
@@ -129,7 +164,7 @@ const generatepage = () => {
           </div>
 
           {/* Performance Insights */}
-          <div className="backdrop-blur-xl border border-white/5 bg-linear-to-br from-white/2 to-transparent shadow-[0_0px_5px_rgba(0,0,0,0.1)] rounded-2xl p-5"
+          <div className="backdrop-blur-xl border border-border/50 rounded-2xl p-4 sm:p-5 shadow-xl border-white/10"
           >
             <h3 className="text-lg font-semibold flex items-center gap-2">
               <BarChart3 className="w-5 h-5 text-green-400" />
