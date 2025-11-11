@@ -39,7 +39,7 @@ export default function QuickActions() {
         <section className="mt-10">
             {/* Header */}
             <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg sm:text-xl font-semibold flex items-center gap-2">
+                <h2 className="text-lg sm:text-2xl font-semibold flex items-center gap-2">
                     Quick Actions <span className="text-yellow-400">⚡</span>
                 </h2>
                 <button className="text-sm text-gray-500 hover:text-white transition">
