@@ -26,9 +26,9 @@ const ContentInput = ({ setGeneratedPost }: Props) => {
   return (
     <div className="backdrop-blur-xl border border-white/8 shadow-[0_0px_5px_rgba(0,0,0,0.1)] rounded-2xl p-5 h-fit">
 
-      <h3 className="text-lg font-semibold flex items-center gap-2">
+      <h3 className="text-lg font-semibold flex items-center gap-2 mb-3">
         <Brain className="w-5 h-5 text-purple-400" />
-        <h2 className="text-lg font-semibold mb-3 text-center">Content Input</h2>
+        <h2 className="text-2xl font-semibold leading-none tracking-tight flex items-center gap-2">Content Input</h2>
       </h3>
 
       <label className="text-sm">What's your story? *</label>

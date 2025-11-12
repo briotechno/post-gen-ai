@@ -1,5 +1,5 @@
 import React from 'react'
-import { Eye, FileText, Timer, TrendingUp } from 'lucide-react';
+import { Clock, Eye, FileText, Sparkles, TrendingUp } from 'lucide-react';
 import DashboardCard from './components/DashboardCard';
 import QuickActions from './components/QuickActions';
 
@@ -30,31 +30,35 @@ interface ActivityItem {
     time: string;
 }
 const Homepage = () => {
-  return (
-    <div className="min-h-screen w-full">
+    return (
+        <div className="min-h-screen w-full">
             <div className="max-w-7xl mx-auto space-y-10">
                 {/* Welcome Section */}
-                <div className="backdrop-blur-xl border border-border/50 rounded-2xl p-4 sm:p-6 shadow-xl border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between">
+                <div className="backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-6 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    {/* Left Section */}
                     <div>
-                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold bg-linear-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-                            Welcome back, <span className="">abc!</span> 👋
-                        </h2>
+                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold bg-linear-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent"> Welcome back, <span className="">
+                            abc!</span> 👋 </h2>
                         <p className="text-sm sm:text-base text-gray-500">
                             Ready to create viral LinkedIn content?
                         </p>
                     </div>
-                    <div className="flex">
-                        <div className="mt-4 mx-2 sm:mt-0 flex">
-                            <div className="flex flex-col">
-                                <span className="text-xl font-medium text-end">2.4M</span>
-                                <span className="text-sm text-gray-500">Total Reach</span>
-                            </div>
+
+                    {/* Right Section */}
+                    <div className="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-3">
+                        {/* Stats */}
+                        <div className="flex flex-col items-end">
+                            <span className="text-xl font-semibold">2.4M</span>
+                            <span className="text-sm text-gray-400">Total Reach</span>
                         </div>
-                        <div className="flex items-center gap-2 bg-linear-to-r from-pink-500 to-purple-500 px-2 py-2 rounded-xl">
-                            <TrendingUp className="w-6 h-6 text-white m-1" />
+
+                        {/* Icon Box */}
+                        <div className="flex items-center justify-center bg-linear-to-r from-pink-500 to-purple-500 p-2.5 rounded-xl shadow-md">
+                            <TrendingUp className="w-5 h-5 text-white" />
                         </div>
                     </div>
                 </div>
+
 
                 {/* Stats Cards */}
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -62,7 +66,7 @@ const Homepage = () => {
                         title="AI Posts Generated"
                         value="1,247"
                         change="+23%"
-                        icon={TrendingUp}
+                        icon={Sparkles}
                         color="from-pink-500 to-purple-500"
                     />
                     <DashboardCard
@@ -83,7 +87,7 @@ const Homepage = () => {
                         title="Time Saved"
                         value="156h"
                         change="+28h"
-                        icon={Timer}
+                        icon={Clock}
                         color="from-orange-500 to-yellow-500"
                     />
                 </div>
@@ -124,7 +128,7 @@ const Homepage = () => {
                 </div>
             </div>
         </div>
-  )
+    )
 }
 
 export default Homepage

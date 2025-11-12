@@ -6,7 +6,6 @@ const stats = [
   { title: "Total Likes", value: 365, icon: Heart, color: "text-[#EF4444]" },
   { title: "Comments", value: 87, icon: MessageCircle, color: "text-[#3B82F6]" },
   { title: "Shares", value: 62, icon: Repeat2, color: "text-[#22C55E]" },
-
 ];
 
 const Analytics = [
@@ -76,12 +75,14 @@ const analyticspage = () => {
   return (
     <div className="min-h-screen w-full">
       <div className="max-w-7xl mx-auto space-y-10">
-        <div className="backdrop-blur-xl border border-border/50 rounded-2xl p-4 sm:p-6 shadow-xl border-white/10 flex flex-col lg:flex-row items-start lg:items-center justify-between">
-          <div className="flex">
-            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-linear-to-r from-pink-500 to-purple-500 mr-2">
+        <div className="backdrop-blur-xl border border-border/50 rounded-2xl p-4 sm:p-6 shadow-xl border-white/10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+          {/* Left Section */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-linear-to-r from-pink-500 to-purple-500 shrink-0">
               <BarChart3 className="w-5 h-5 text-white" />
             </div>
-            <div className="">
+
+            <div>
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold bg-linear-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
                 Analytics & History
               </h2>
@@ -91,21 +92,22 @@ const analyticspage = () => {
             </div>
           </div>
 
-          {/* Serchbar */}
-          <div className="flex">
-            <div
-              className="flex items-center gap-2 w-65 max-w-sm px-4 py-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md shadow-inner focus-within:border-purple-400 transition"
-            >
-              <Search className="w-4 h-4 text-gray-400" />
+          {/* Searchbar + Filter */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
+            {/* Search Bar */}
+            <div className="flex items-center gap-2 w-full sm:w-72 lg:w-64 px-4 py-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md shadow-inner focus-within:border-purple-400 transition">
+              <Search className="w-4 h-4 text-gray-400 shrink-0" />
               <input
                 type="text"
                 placeholder="Search drafts..."
                 className="bg-transparent outline-none text-sm text-gray-200 placeholder-gray-500 w-full"
               />
             </div>
-            <div className="flex items-center gap-2 max-w-sm mx-2 p-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md shadow-inner focus-within:border-purple-400 transition">
+
+            {/* Filter Button */}
+            <button className="flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md shadow-inner hover:border-purple-400 transition">
               <Filter className="w-4 h-4 text-gray-400" />
-            </div>
+            </button>
           </div>
         </div>
 
@@ -125,56 +127,71 @@ const analyticspage = () => {
         {/* Analytics */}
         <div className="grid grid-cols-1 gap-4">
           {Analytics.map((draft, index) => (
-            <div key={index} className="backdrop-blur-xl border border-white/5 bg-linear-to-br from-white/2 to-transparent shadow-[0_0px_5px_rgba(0,0,0,0.1)] rounded-2xl p-5 space-y-3" >
+            <div
+              key={index}
+              className="backdrop-blur-xl border border-white/5 bg-linear-to-br from-white/5 to-transparent shadow-[0_0px_5px_rgba(0,0,0,0.1)] rounded-2xl p-5 space-y-3 transition hover:shadow-lg hover:border-white/10"
+            >
+              {/* Header */}
+              <div className="flex flex-wrap justify-between items-start gap-2">
+                <div className="flex flex-wrap items-center gap-2">
+                  <h2 className="text-base font-semibold text-white">{draft.title}</h2>
 
-              <div className="flex justify-between items-start">
-                <div className="flex">
-                  <h2 className="text-base font-semibold">{draft.title}</h2>
+                  <span className="bg-[#5257C1] text-white px-2 py-1 text-xs font-medium rounded-full capitalize">
+                    {draft.category}
+                  </span>
 
-                  <span className="bg-[#5257C1] inline-block px-2 py-1 mx-2 text-xs font-medium rounded-full capitalize"> {draft.category} </span>
-
-                  <span className="inline-block px-2 py-1 text-xs rounded-full 
-                   bg-white/10 capitalize"> {draft.categoryTwo} </span>
-
+                  <span className="px-2 py-1 text-xs rounded-full bg-white/10 capitalize text-gray-300">
+                    {draft.categoryTwo}
+                  </span>
                 </div>
-                <button className="hover:text-white transition">⋮</button>
+                <button className="hover:text-white text-gray-400 transition text-lg">⋮</button>
               </div>
 
-              <div className="flex text-xs text-gray-500 mt-2">
+              {/* Dates */}
+              <div className="flex flex-wrap text-xs text-gray-500 gap-2 mt-1">
                 <p>Created: {draft.created}</p>
-                <p className='mx-2'>Published: {draft.updated}</p>
+                <p>Published: {draft.updated}</p>
               </div>
 
-              <p className="text-sm text-gray-500">{draft.content}</p>
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <div className="">
+              {/* Content */}
+              <p className="text-sm text-gray-400 leading-snug">{draft.content}</p>
+
+              {/* Hashtags & Actions */}
+              <div className="flex flex-wrap items-center justify-between gap-3 mt-3">
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
                   {draft.hashtags.map((tag, i) => (
-                    <span key={i} className="text-xs mx-1 bg-white/5 border border-white/10 px-2 py-1 rounded-full">
+                    <span
+                      key={i}
+                      className="text-xs bg-white/5 border border-white/10 px-2 py-1 rounded-full text-gray-300"
+                    >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <div className="flex text-gray-500 text-sm mt-3">
-                  <div className="flex items-center mx-1 gap-1 hover:text-pink-500 transition">
+
+                {/* Reactions */}
+                <div className="flex text-gray-500 text-sm gap-4">
+                  <div className="flex items-center gap-1 hover:text-pink-500 transition">
                     <Heart className="w-4 h-4" />
                     <span>{draft.heart}</span>
                   </div>
 
-                  <div className="flex items-center mx-2 gap-1 hover:text-blue-400 transition">
+                  <div className="flex items-center gap-1 hover:text-blue-400 transition">
                     <MessageCircle className="w-4 h-4" />
                     <span>{draft.MessageCircle}</span>
                   </div>
 
-                  <div className="flex items-center mx-1 gap-1 hover:text-green-400 transition">
+                  <div className="flex items-center gap-1 hover:text-green-400 transition">
                     <History className="w-4 h-4" />
                     <span>{draft.History}</span>
                   </div>
                 </div>
               </div>
-
             </div>
           ))}
         </div>
+
       </div>
     </div>
   )

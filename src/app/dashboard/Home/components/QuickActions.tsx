@@ -1,13 +1,13 @@
 "use client";
 
-import { PenTool, BarChart3, FileText, Calendar, ArrowRight } from "lucide-react";
+import { BarChart3, FileText, Calendar, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 const actions = [
     {
         title: "Generate Post",
         desc: "Create engaging content with AI",
-        icon: PenTool,
+        icon: Sparkles,
         color: "from-pink-500 to-purple-500",
         href: "/dashboard/generate",
     },

@@ -1,11 +1,11 @@
 "use client";
 import {
-    Home,
     FileText,
     BarChart3,
     Settings,
-    PenTool,
     LogOut,
+    LayoutDashboard,
+    Sparkles,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -13,31 +13,11 @@ import ThemeToggle from "../ThemeToggle";
 import { useCallback } from "react";
 
 const navItems = [
-    { name: "Home", label: "Overview", icon: Home, href: "/dashboard" },
-    {
-        name: "Generate Post",
-        label: "AI Generator",
-        icon: PenTool,
-        href: "/dashboard/generate",
-    },
-    {
-        name: "Drafts",
-        label: "Saved Posts",
-        icon: FileText,
-        href: "/dashboard/drafts",
-    },
-    {
-        name: "Analytics",
-        label: "Performance",
-        icon: BarChart3,
-        href: "/dashboard/analytics",
-    },
-    {
-        name: "Settings",
-        label: "Preferences",
-        icon: Settings,
-        href: "/dashboard/settings",
-    },
+    { name: "Home", label: "Overview", icon: LayoutDashboard, href: "/dashboard" },
+    { name: "Generate Post", label: "AI Generator", icon: Sparkles, href: "/dashboard/generate", },
+    { name: "Drafts", label: "Saved Posts", icon: FileText, href: "/dashboard/drafts", },
+    { name: "Analytics", label: "Performance", icon: BarChart3, href: "/dashboard/analytics", },
+    { name: "Settings", label: "Preferences", icon: Settings, href: "/dashboard/settings", },
 ];
 
 const Sidebar = () => {
@@ -115,30 +95,51 @@ const Sidebar = () => {
                 </nav>
 
                 {/* Bottom Section */}
-                <div className="p-4 border-t border-white/10 space-y-2">
-                    <div className="backdrop-blur-xl border border-white/10 bg-lineaar-to-b from-white/3 to-white/1 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_6px_25px_rgba(0,0,0,0.3)] transition-all duration-300 ease-in-out rounded-2xl p-3 flex items-center gap-3 hover:bg-white/10">
-                        <div className="w-10 h-10 bg-[#6366F1] rounded-xl flex items-center justify-center font-bold text-sm text-white"> AB </div>
+                <div className="p-2 sm:p-3 md:p-4 border-t border-white/10 space-y-2">
+                    {/* Profile Card */}
+                    <div className="backdrop-blur-xl border border-white/10 bg-linear-to-b from-white/5 to-white/0 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_6px_25px_rgba(0,0,0,0.3)] transition-all duration-300 ease-in-out rounded-2xl p-2 md:p-3 flex items-center justify-center md:justify-start gap-0 md:gap-3 hover:bg-white/10">
+                        {/* Avatar (Always visible) */}
+                        <div className="w-10 h-10 bg-[#6366F1] rounded-xl flex items-center justify-center font-bold text-sm text-white">
+                            AB
+                        </div>
+
+                        {/* Name + Plan (Hidden on mobile) */}
                         <div className="hidden md:block">
                             <h2 className="font-medium">abc</h2>
-                            <div className="flex items-center justify-center gap-2">
-                                <span className=" -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full animate-pulse text-base leading-none"></span>
-                                <p className="text-xs font-medium text-purple-400">
-                                    Pro Plan</p>
+                            <div className="flex items-center gap-2">
+                                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                <p className="text-xs font-medium text-purple-400">Pro Plan</p>
                             </div>
                         </div>
                     </div>
-                    <div className="backdrop-blur-xl border border-white/10 
-                    bg-lineaar-to-b from-white/3 to-white/1 
-                    shadow-[0_4px_20px_rgba(0,0,0,0.2)] 
-                    hover:shadow-[0_6px_25px_rgba(0,0,0,0.3)] transition-all hidden 
-                    md:flex items-center justify-between rounded-2xl px-4 py-2 hover:bg-white/10">
-                        <span className="font-medium text-md">Theme</span>
-                        <ThemeToggle />
+
+                    {/* Theme Toggle */}
+                    <div className="backdrop-blur-xl border border-white/10 bg-linear-to-b from-white/5 to-white/0 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_6px_25px_rgba(0,0,0,0.3)] transition-all duration-300 ease-in-out flex items-center justify-center md:justify-between rounded-2xl px-2 md:px-4 py-2 hover:bg-white/10">
+                        {/* Icon only on mobile */}
+                        <div className="md:hidden">
+                            <ThemeToggle />
+                        </div>
+
+                        {/* Label + Toggle (Desktop only) */}
+                        <div className="hidden md:flex items-center justify-between w-full">
+                            <span className="font-medium text-md">Theme</span>
+                            <ThemeToggle />
+                        </div>
                     </div>
-                    <button type="button" onClick={handleLogout} className="backdrop-blur-xl border border-white/10 bg-lineaar-to-b from-white/3 to-white/1 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_6px_25px_rgba(0,0,0,0.3)] transition-all w-full py-2 mt-1 font-medium text-md rounded-xl hover:bg-white/10 flex items-center justify-center gap-2" >
-                        <LogOut className="w-4 h-4" /> Logout
+
+                    {/* Logout Button */}
+                    <button
+                        type="button"
+                        onClick={handleLogout}
+                        className="backdrop-blur-xl border border-white/10 bg-linear-to-b from-white/5 to-white/0 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_6px_25px_rgba(0,0,0,0.3)] transition-all w-full py-2 mt-1 font-medium text-md rounded-xl hover:bg-white/10 flex items-center justify-center md:justify-center gap-0 md:gap-2"
+                    >
+                        {/* Icon (always visible) */}
+                        <LogOut className="w-5 h-5" />
+                        {/* Text (desktop only) */}
+                        <span className="hidden md:inline">Logout</span>
                     </button>
                 </div>
+
             </div>
         </aside>
     );

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react'
-import { TrendingUp, Lightbulb, AtSign, Zap, User, Clock, BarChart3 } from 'lucide-react'
+import { TrendingUp, Lightbulb, AtSign, Zap, User, Clock, BarChart3, Sparkles } from 'lucide-react'
 import Tabs from './components/Tabs';
 import ContentInput from './components/ContentInput';
 import YourPost from './components/YourPost';
@@ -69,7 +69,7 @@ const generatepage = () => {
         <div className="backdrop-blur-xl border border-border/50 rounded-2xl p-4 sm:p-6 shadow-xl border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between">
           <div className="flex">
             <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-linear-to-r from-pink-500 to-purple-500 mr-2">
-              <TrendingUp className="w-5 h-5 text-white" />
+              <Sparkles className="w-5 h-5 text-white" />
             </div>
             <div className="">
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold bg-linear-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
@@ -117,7 +117,7 @@ const generatepage = () => {
         </div>
 
         {/* Quick,Trending,Performance */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 rounded-2xl max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 rounded-2xl max-w-7xl mx-auto">
 
           {/* Quick Tips */}
           <div className="backdrop-blur-xl border border-border/50 rounded-2xl p-4 sm:p-5 shadow-xl border-white/10"

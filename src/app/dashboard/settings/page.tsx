@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react'
+import React from 'react'
 import { CircleAlert, Gem, LogOut, Save, Settings } from 'lucide-react'
 import Informationpage from './components/Information/page'
 import Appearancepage from './components/Appearance/page'
@@ -8,9 +8,16 @@ import Notificationspage from './components/Notifications/page'
 import Privacypage from './components/Privacy/page'
 import AccountManagementpage from './components/AccountManagement/page'
 import ContentGenerationpage from './components/ContentGeneration/page'
+import { useRouter } from "next/navigation";
 
 const page = () => {
-  const [tone, setTone] = useState("");
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.clear();
+    router.push("/login");
+  };
 
   return (
     <div className="min-h-screen w-full">
@@ -43,7 +50,7 @@ const page = () => {
           <div className="flex">
             <div className="mt-4 mx-2 sm:mt-0 flex">
               <div className="flex items-center gap-2 px-2 py-1 rounded-xl border border-white/10 backdrop-blur-md shadow-inner focus-within:border-purple-400 transition">
-                <h6 className="flex items-center text-[10px] text-white rounded-full ml-2">
+                <h6 className="flex items-center text-[10px] rounded-full ml-2">
                   <Gem className="w-4 h-4 mr-2 text-yellow-500" />
                   Pro Plan
                 </h6>
@@ -78,7 +85,9 @@ const page = () => {
             <Save className="w-5 h-5" />
             Save All Changes
           </button>
-          <button className="flex items-center justify-center gap-2 border border-red-500/50 text-red-400 hover:bg-red-500/10 font-medium py-3 px-5 rounded-lg transition-all duration-200">
+          <button
+            onClick={handleLogout}
+            className="flex items-center justify-center gap-2 border border-red-500/50 text-red-400 hover:bg-red-500/10 font-medium py-3 px-5 rounded-lg transition-all duration-200">
             <LogOut className="w-5 h-5" />
             Sign Out
           </button>
