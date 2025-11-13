@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from "react";
 import { Sparkles, UserPlus, TrendingUp, Hash } from "lucide-react";
 

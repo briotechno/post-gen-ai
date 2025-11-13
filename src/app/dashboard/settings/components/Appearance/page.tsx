@@ -1,3 +1,4 @@
+"use client"
 import ThemeToggle from '@/src/components/ThemeToggle'
 import { Monitor, Moon, Palette, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes';

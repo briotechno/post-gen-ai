@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import React from 'react'
 import { CircleAlert, Gem, LogOut, Save, Settings } from 'lucide-react'
 import Informationpage from './components/Information/page'
