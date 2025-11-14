@@ -9,8 +9,8 @@ import { useTheme } from "next-themes";
 const LoginPage = () => {
     const { theme, setTheme } = useTheme();
     const [showPassword, setShowPassword] = useState(false);
-    const [email, setEmail] = useState("abc@gmail.com");
-    const [password, setPassword] = useState("12345");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
