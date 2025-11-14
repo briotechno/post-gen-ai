@@ -27,7 +27,7 @@ const Sidebar = () => {
     const handleLogout = useCallback(() => {
         localStorage.removeItem("authToken");
         sessionStorage.clear();
-        router.push("/");
+        router.push("/login");
     }, [router]);
 
     return (

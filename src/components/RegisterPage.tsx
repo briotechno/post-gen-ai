@@ -245,11 +245,12 @@ const RegisterPage = () => {
 
                             {/* ===== Loading Overlay ===== */}
                             {loading && (
-                                <div className="fixed inset-0 flex flex-col items-center justify-center bg-[#111828] transition-all duration-500">
+                                <div className="fixed inset-0 z-9 flex flex-col items-center justify-center backdrop-blur-3xl bg-black/10 transition-all duration-500">
 
-                                    <div className="relative w-16 h-16 flex items-center justify-center animate-spin-slow">
+                                    <div className="relative w-16 h-16 flex items-center justify-center">
+
                                         {/* Gradient Ring */}
-                                        <div className="absolute inset-0 rounded-full bg-[conic-gradient(from_0deg,var(--color-pink-500),var(--color-purple-500),var(--color-pink-500))] p-3 [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] mask-exclude animate-spin" />
+                                        <div className="absolute inset-0 rounded-full bg-[conic-gradient(from_0deg,var(--color-pink-500),var(--color-purple-500),var(--color-pink-500))] p-3 [mask:linear-gradient(#fff_0_0_0)_content-box,linear-gradient(#fff_0_0_0)] mask-exclude animate-spin" />
 
                                         {/* Inner Circle */}
                                         <div className="relative w-14 h-14 rounded-full bg-[#0B1126] flex items-center justify-center shadow-[0_0_15px_rgba(236,72,153,0.25)] animate-spin">

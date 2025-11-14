@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import QuickStartButtons from "./QuickStartButtons";
 import ToneTypeSelector from "./ToneTypeSelector";
 import AdvancedOptions from "./AdvancedOptions";
-import { Brain } from "lucide-react";
+import { Brain, Loader2 } from "lucide-react";
 
 interface Props {
   setGeneratedPost: (text: string) => void;
@@ -13,14 +13,51 @@ const ContentInput = ({ setGeneratedPost }: Props) => {
   const [story, setStory] = useState("");
   const [tone, setTone] = useState("");
   const [type, setType] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleGenerate = () => {
-    if (!story) return;
-    // Mock AI generation — replace with your API call
-    setGeneratedPost(
-      `✨ Here's your AI-generated post based on: "${story}"\nTone: ${tone || "Default"
-      }\nType: ${type || "General"}`
-    );
+  const handleGenerate = async () => {
+    if (!story.trim()) return;
+
+    try {
+      setLoading(true);
+      setGeneratedPost("");
+      console.log("Response send>>>");
+
+      const response = await fetch("https://ai-linkdin-production.up.railway.app/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          post: story,
+          tone: tone || "default",
+          type: type || "general",
+        }),
+      });
+
+      console.log("Response send 1>>>", response);
+      const text = await response.json();
+      console.log("Response send 2>>>", text);
+      
+      let data;
+      // try {
+        //   data = JSON.parse(text);
+      // } catch {
+      //   console.warn(" using raw HTML instead");
+      //   data = { text }; 
+      // }
+
+      if (response.ok) {
+        setGeneratedPost(text.post);
+      } else {
+        setGeneratedPost("Something went wrong. Please try again.");
+      }
+      console.log("Response send 3>>>",3)
+    } catch (error) {
+      console.error("Error:", error);
+      setGeneratedPost("Failed to connect to AI API. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+      console.log("Response send 4>>>",4)
   };
 
   return (
@@ -55,9 +92,17 @@ const ContentInput = ({ setGeneratedPost }: Props) => {
 
       <button
         onClick={handleGenerate}
-        className="mt-5 w-full bg-linear-to-r from-pink-500 to-purple-500 text-white py-2.5 rounded-xl font-medium hover:opacity-90 transition"
+        disabled={loading}
+        className="flex items-center justify-center mt-5 w-full bg-linear-to-r from-pink-500 to-purple-500 text-white py-2.5 rounded-xl font-medium hover:opacity-90 transition"
       >
-        ✨ Generate AI Posts
+        {loading ? (
+          <>
+            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+            Generating...
+          </>
+        ) : (
+          "✨ Generate AI Posts"
+        )}
       </button>
     </div>
   );
