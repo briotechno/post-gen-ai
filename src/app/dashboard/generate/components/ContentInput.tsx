@@ -13,6 +13,18 @@ const ContentInput = ({ setGeneratedPost }: Props) => {
   const [story, setStory] = useState("");
   const [tone, setTone] = useState("");
   const [type, setType] = useState("");
+
+  // Advanced Options
+  const [industry, setIndustry] = useState("");
+  const [audience, setAudience] = useState("");
+  const [length, setLength] = useState(300);
+  const [keywords, setKeywords] = useState("");
+  const [hashtags, setHashtags] = useState("");
+  const [engaging, setEngaging] = useState(true);
+  const [stats, setStats] = useState(false);
+  const [emojis, setEmojis] = useState(true);
+  const [cta, setCta] = useState(true);
+
   const [loading, setLoading] = useState(false);
 
   const handleGenerate = async () => {
@@ -21,43 +33,46 @@ const ContentInput = ({ setGeneratedPost }: Props) => {
     try {
       setLoading(true);
       setGeneratedPost("");
-      console.log("Response send>>>");
+      console.log("Api Call Send>>>");
+
+      const payload = {
+        topic: story,
+        tone: tone || "Professional",
+        type: type || "Achievement",
+        industry: industry || "Technology",
+        audience,
+        length,
+        keywords,
+        hashtags,
+        engaging,
+        stats,
+        emojis,
+        cta
+      };
 
       const response = await fetch("https://ai-linkdin-production.up.railway.app/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          post: story,
-          tone: tone || "default",
-          type: type || "general",
-        }),
+        body: JSON.stringify(payload),
       });
 
-      console.log("Response send 1>>>", response);
+      console.log("Api Response send 1>>>", response);
       const text = await response.json();
-      console.log("Response send 2>>>", text);
-      
-      let data;
-      // try {
-        //   data = JSON.parse(text);
-      // } catch {
-      //   console.warn(" using raw HTML instead");
-      //   data = { text }; 
-      // }
+      console.log("Api Response send 2>>>", text);
 
       if (response.ok) {
         setGeneratedPost(text.post);
       } else {
         setGeneratedPost("Something went wrong. Please try again.");
       }
-      console.log("Response send 3>>>",3)
+      console.log("Api Response send 3>>>", 3)
     } catch (error) {
       console.error("Error:", error);
       setGeneratedPost("Failed to connect to AI API. Please try again later.");
     } finally {
       setLoading(false);
     }
-      console.log("Response send 4>>>",4)
+    console.log("Api Response send 4>>>", 4)
   };
 
   return (
@@ -81,14 +96,23 @@ const ContentInput = ({ setGeneratedPost }: Props) => {
 
       <div className="mt-4">
         <ToneTypeSelector
-          tone={tone}
-          setTone={setTone}
-          type={type}
-          setType={setType}
+          tone={tone} setTone={setTone}
+          type={type} setType={setType}
         />
       </div>
 
-      <AdvancedOptions />
+      <AdvancedOptions
+        industry={industry} setIndustry={setIndustry}
+        audience={audience} setAudience={setAudience}
+        length={length} setLength={setLength}
+        keywords={keywords} setKeywords={setKeywords}
+        hashtags={hashtags} setHashtags={setHashtags}
+        engaging={engaging} setEngaging={setEngaging}
+        stats={stats} setStats={setStats}
+        emojis={emojis} setEmojis={setEmojis}
+        cta={cta} setCta={setCta}
+      />
+
 
       <button
         onClick={handleGenerate}
